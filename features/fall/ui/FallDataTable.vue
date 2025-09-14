@@ -18,10 +18,11 @@ const props = withDefaults(defineProps<{
   loading?: boolean
 }>(), { loading: false })
 
-const { rows, loading } = toRefs(props)   // ⬅️ keep reactivity
+const { rows, loading } = toRefs(props)
 
 const columns: ColumnDef<FallModel>[] = [
   { field: 'patientName', header: 'Patient', sortable: true, filter: true },
+  { field: 'patientId', header: 'Patient Id', sortable: true, filter: true },
   { field: 'roomNo', header: 'Room', sortable: true, filter: true },
   { field: 'fallAt', header: 'Fall At', sortable: true, dataType: 'date' },
   { field: 'fallType', header: 'Type', sortable: true, filter: true },
