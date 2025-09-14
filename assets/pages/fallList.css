@@ -1,0 +1,26 @@
+.fall_data_table_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px
+}
+
+.summary {
+    display: flex;
+    align-items: center;
+    gap: 8px
+}
+
+.badge {
+    display: inline-block;
+    padding: .25rem .6rem;
+    border-radius: 9999px;
+    background: #eef2ff;
+    color: #3730a3;
+    font-weight: 600
+}
+
+.muted {
+    color: #6b7280;
+    font-size: .9rem
+}
