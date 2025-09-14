@@ -5,9 +5,9 @@
       <h1 class="logo">Teton Insurance Integration :: {{ pageTitle }}</h1>
         <nav class="nav" aria-label="Main navigation">
           <NuxtLink to="/" class="nav-link">Home</NuxtLink>
-          <NuxtLink to="/" class="nav-link">Falls</NuxtLink>
+          <NuxtLink to="/fall" class="nav-link">Falls</NuxtLink>
           <div class="buttons">
-            <NuxtLink to="/login" class="button">Login</NuxtLink>
+            <NuxtLink to="" class="button">Login</NuxtLink>
           </div>
         </nav>
       </div>
