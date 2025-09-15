@@ -1,6 +1,7 @@
 import type { ClaimTypeModel, ClaimSubmissionModel } from '~/entities/claim/claim.model'
-import type { ClaimSubmissionDto } from '~/entities/claim/claim.dto'
+import type { ClaimSubmissionDto, ClaimTypeDto } from '~/entities/claim/claim.dto'
 import { toClaimTypeModels, toClaimDto } from '~/entities/claim/claim.mapper'
+import { cacheFetch } from '~/shared/utils/cacheFetcher'
 
 export class ClaimService {
   private readonly typesEndpoint = '/api/claimTypes'
@@ -10,8 +11,10 @@ export class ClaimService {
 
   async typeList(opts?: { fallback?: ClaimTypeModel[] }): Promise<ClaimTypeModel[]> {
     try {
-      const raw = await this.fetcher<unknown>(this.typesEndpoint)
-      return toClaimTypeModels(raw)
+    return cacheFetch(this.typesEndpoint, async () => {
+      const data = await $fetch<ClaimTypeDto[]>(this.typesEndpoint)
+      return toClaimTypeModels(data)
+    })
     } catch (err: any) {
       const message = err?.data?.statusMessage || err?.message || 'Failed to load claim types'
       if (opts?.fallback) {
