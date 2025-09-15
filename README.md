@@ -41,9 +41,9 @@ npm i --save-dev @types/node
 Copy `.env.example` → `.env` and fill in your tokens.
 
 - `TETON_TOKEN`: API token for Teton
-- `BEST_TOKEN`: API token for Best Insurance
+- `BEST_INSURANCE_TOKEN`: API token for Best Insurance
 - `NUXT_PUBLIC_TETON_BASE`: Base URL for Teton API
-- `NUXT_PUBLIC_BEST_BASE`: Base URL for Best Insurance API
+- `NUXT_PUBLIC_BEST_INSURANCE_BASE`: Base URL for Best Insurance API
 - `NUXT_PUBLIC_TETON_DEPARTMENT_ID`: Department ID (e.g. 72)
 - `NUXT_PUBLIC_TETON_API_VERSION`: API version header
 
