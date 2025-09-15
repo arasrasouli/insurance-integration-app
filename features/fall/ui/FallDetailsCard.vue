@@ -61,9 +61,30 @@
       </div>
 
       <div class="fall-details-actions">
-        <Button label="Submit Claim" icon="pi pi-send" severity="success" />
+        <Button
+          label="Submit Claim"
+          icon="pi pi-send"
+          severity="success"
+          :disabled="fall?.id == null || insurance?.insuranceNumber == null"
+          @click="showClaimDialog"
+        />
       </div>
     </div>
+
+    <Dialog
+      v-model:visible="showClaimForm"
+      header="Claim Submission Form"
+      :modal="true"
+      :style="{ width: '30rem' }"
+      :draggable="false"
+    >
+      <ClaimSubmissionForm 
+        :fall-id="fall.id" 
+        :insurance-number="insurance?.insuranceNumber ?? 'N/A'" 
+        @submit="submitClaim" 
+        @cancel="showClaimForm = false" 
+      />
+    </Dialog>
   </div>
 </template>
 
@@ -73,6 +94,8 @@ import type { FallModel } from '~/entities/fall/fall.model'
 import type { PatientInsuranceModel } from '~/entities/insurance/insurance.model'
 import { InsuranceService } from '~/features/insurance/service/InsuranceService'
 import Button from 'primevue/button'
+import Dialog from 'primevue/dialog'
+import ClaimSubmissionForm from '~/features/claim/ui/ClaimSubmissionForm.vue'
 
 const props = defineProps<{ fall: FallModel }>()
 defineEmits<{ (e: 'back'): void }>()
@@ -80,6 +103,8 @@ defineEmits<{ (e: 'back'): void }>()
 const insurance = ref<PatientInsuranceModel | null>(null)
 const insuranceLoading = ref(false)
 const insuranceService = new InsuranceService()
+
+const showClaimForm = ref(false)
 
 onMounted(async () => {
   if (props.fall.patientId) {
@@ -95,6 +120,15 @@ onMounted(async () => {
 function formatDate(date: Date | string | null) {
   if (!date) return '—'
   return new Date(date).toLocaleString()
+}
+
+function showClaimDialog() {
+  showClaimForm.value = true
+}
+
+function submitClaim() {
+  console.log('Claim submitted for fall:', props.fall)
+  showClaimForm.value = false
 }
 </script>
 

@@ -1,0 +1,62 @@
+.claim-submission-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-family: 'Inter', sans-serif;
+  color: #111827;
+}
+
+.claim-submission-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: #1f2937;
+  border-bottom: 2px solid #f1f1f1;
+  padding-bottom: 0.75rem;
+}
+
+.claim-section {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.claim-section label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.claim-section p {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.claim-section strong {
+  display: inline-block;
+  min-width: 160px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.claim-section .w-60 {
+  width: 15rem;
+}
+
+.claim-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  border-top: 2px solid #f1f1f1;
+  padding-top: 1rem;
+}
