@@ -24,7 +24,7 @@
           <Select
             id="claimType"
             v-model="selectedClaimType"
-            :options="claimTypeOptions"
+            :options="claimTypes"
             optionLabel="description"
             optionValue="code"
             class="w-60"
@@ -34,15 +34,6 @@
         <p v-if="loadError" class="text-sm text-red-600 mt-2">
           Failed to load claim types: {{ loadError }}
         </p>
-        <Button
-          v-if="loadError && !useFallback"
-          size="small"
-          text
-          severity="danger"
-          label="Show claim test types"
-          class="mt-2"
-          @click="useFallback = true"
-        />
       </div>
 
       <div v-if="submitError" class="text-red-600 text-sm mt-2">
@@ -74,7 +65,6 @@ import { ref, computed, onMounted } from 'vue'
 import Button from 'primevue/button'
 import Select from 'primevue/select'
 import { useClaim } from '~/features/claim/composable/useClaim'
-import type { ClaimTypeModel } from '~/entities/claim/claim.model'
 
 const props = defineProps<{
   fallId: number
@@ -94,21 +84,12 @@ const {
   submitClaim,
 } = useClaim()
 
-const fallbackTypes: ClaimTypeModel[] = [
-  { code: 'FALL_INJURY', description: 'Fall Injury' },
-  { code: 'RANDOM_WRONG_TYPE', description: 'Random Wrong Type (test)' },
-]
-const useFallback = ref(false)
-
-const claimTypeOptions = computed<ClaimTypeModel[]>(() =>
-  useFallback.value ? fallbackTypes : claimTypes.value
-)
-
 const selectedClaimType = ref<string | null>(null)
 
 const loadError = computed(() =>
   error.value ? (error.value instanceof Error ? error.value.message : String(error.value)) : ''
 )
+
 const submitErrorMessage = computed(() =>
   submitError.value ? (submitError.value instanceof Error ? submitError.value.message : String(submitError.value)) : ''
 )
