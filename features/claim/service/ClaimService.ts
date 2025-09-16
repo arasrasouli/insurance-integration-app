@@ -11,10 +11,10 @@ export class ClaimService {
 
   async typeList(opts?: { fallback?: ClaimTypeModel[] }): Promise<ClaimTypeModel[]> {
     try {
-    return cacheFetch(this.typesEndpoint, async () => {
-      const data = await $fetch<ClaimTypeDto[]>(this.typesEndpoint)
-      return toClaimTypeModels(data)
-    })
+      return await cacheFetch(this.typesEndpoint, async () => {
+        const data = await this.fetcher<ClaimTypeDto[]>(this.typesEndpoint)
+        return toClaimTypeModels(data)
+      })
     } catch (err: any) {
       const message = err?.data?.statusMessage || err?.message || 'Failed to load claim types'
       if (opts?.fallback) {

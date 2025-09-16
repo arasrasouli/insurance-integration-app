@@ -12,6 +12,6 @@ export default defineNuxtConfig({
     },
   },
   css: ['primeicons/primeicons.css'],
-  build: { transpile: ['primevue', 'pinia'] },
+  build: { transpile: ['primevue', 'pinia', '@nuxt/test-utils/module'] },
 })
 
