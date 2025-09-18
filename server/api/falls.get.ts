@@ -11,17 +11,17 @@ export default defineEventHandler(async (event) => {
   }
 
   const cfg = useRuntimeConfig()
-  if (!cfg.public.hospitalBase || !cfg.tetonToken || !cfg.public.tetonDepartmentId || !cfg.public.tetonApiVersion) {
+  if (!cfg.public.hospitalBase || !cfg.hospitalToken || !cfg.public.hospitalDepartmentId || !cfg.public.apiVersion) {
     throw createError({ statusCode: 500, statusMessage: 'Missing env config' })
   }
 
-  const url = `${cfg.public.hospitalBase}/departments/${cfg.public.tetonDepartmentId}/falls`
+  const url = `${cfg.public.hospitalBase}/departments/${cfg.public.hospitalDepartmentId}/falls`
 
   try {
     return await $fetch(url, {
       headers: {
-        Authorization: `Bearer ${cfg.tetonToken}`,
-        'x-teton-api-version': String(cfg.public.tetonApiVersion),
+        Authorization: `Bearer ${cfg.hospitalToken}`,
+        'x-api-version': String(cfg.public.apiVersion),
       },
       query: { startDate, endDate },
     })

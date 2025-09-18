@@ -5,7 +5,7 @@
         <NuxtLink to="" class="footer-link">About</NuxtLink>
         <NuxtLink to="" class="footer-link">Contact</NuxtLink>
       </nav>
-      <p class="copyright">&copy; 2025 Teton Insurance Integration.</p>
+      <p class="copyright">&copy; 2025 Insurance Integration App.</p>
     </div>
   </footer>
 </template>

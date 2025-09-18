@@ -23,6 +23,6 @@ const pageTitle = computed(() => {
 })
 
 useHead({
-  title: `${pageTitle.value} | Teton Insurance Integration`
+  title: `${pageTitle.value} | Insurance Integration App`
 })
 </script>

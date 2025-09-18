@@ -2,7 +2,7 @@
   <client-only>
     <header class="header">
       <div class="container">
-      <h1 class="logo">Teton Insurance Integration :: {{ pageTitle }}</h1>
+      <h1 class="logo">Insurance Integration App :: {{ pageTitle }}</h1>
         <nav class="nav" aria-label="Main navigation">
           <NuxtLink to="/" class="nav-link">Home</NuxtLink>
           <NuxtLink to="/fall" class="nav-link">Falls</NuxtLink>

@@ -1,6 +1,6 @@
-# Teton Insurance Integration
+# Insurance Integration App
 
-This project integrates Teton fall monitoring data with Best Insurance APIs to enable insurance claims management.  
+This project is a training application that integrates hospital fall incident monitoring data with insurance APIs to enable insurance claims submission.  
 Built with **Nuxt 3 + Vue 3**, it follows a clean domain-driven structure.
 
 ## Architecture Overview
@@ -14,12 +14,18 @@ Built with **Nuxt 3 + Vue 3**, it follows a clean domain-driven structure.
 
 ### 1. API Layer
 - Located in `server/api/`.
-- Handles requests from frontend and proxies to upstream APIs (**Teton / Best Insurance**).
+- Handles requests from frontend and proxies to upstream APIs (**Hospital / Best Insurance**).
 - Centralizes **error handling**, **env-based configuration**, and **response normalization**.
 - Uses a **`fetchWithRetry` utility** for resilience against flaky upstream APIs:
   - Supports retries with exponential backoff.
   - Cancels requests with a timeout to prevent hanging.
   - Especially useful when fetching claim types, where intermittent upstream errors were resolved by retrying.
+- Includes a **mock API layer** under `server/api/mock-api/`:
+  - Reads from static JSON files in `server/data/`.
+  - Provides endpoints for **falls**, **insurance**, and **claims**.
+  - Useful for **local development** when external APIs are unavailable.
+  - Mock APIs mimic real endpoints (e.g., `/api/departments/:id/falls`, `/api/insurance/claim-types`, `/api/insurance/claims`) and return deterministic responses with proper status codes.
+
 
 
 ### 2. Domain Services
@@ -105,10 +111,10 @@ npm i --save-dev @types/node
 
 Copy `.env.example` → `.env` and fill in your tokens.
 
-- `TETON_TOKEN`: API token for Teton
+- `HOSPITAL_TOKEN`: API token for Hospital
 - `BEST_INSURANCE_TOKEN`: API token for Best Insurance
-- `NUXT_PUBLIC_TETON_BASE`: Base URL for Teton API
+- `NUXT_PUBLIC_HOSPITAL_BASE`: Base URL for Hospital API
 - `NUXT_PUBLIC_BEST_INSURANCE_BASE`: Base URL for Best Insurance API
-- `NUXT_PUBLIC_TETON_DEPARTMENT_ID`: Department ID (e.g. 72)
-- `NUXT_PUBLIC_TETON_API_VERSION`: API version header
+- `NUXT_PUBLIC_HOSPITAL_DEPARTMENT_ID`: Department ID (e.g. 72)
+- `NUXT_PUBLIC_API_VERSION`: API version header
 
