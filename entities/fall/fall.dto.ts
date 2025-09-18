@@ -17,5 +17,6 @@ export interface FallDto {
   was_patient_alone: boolean | null
   reason: string
   updated_at: string
-  fall_detection: string
+  fall_detection: string,
+  department_id: number
 }
