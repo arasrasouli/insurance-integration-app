@@ -1,0 +1,18 @@
+[
+    {
+        "code": "FWI",
+        "description": "Fall with injury requiring medical attention and hospitalization."
+    },
+    {
+        "code": "FWNI",
+        "description": "Fall without injury, monitored for safety."
+    },
+    {
+        "code": "ER",
+        "description": "Emergency response for fall incident."
+    },
+    {
+        "code": "REHAB",
+        "description": "Rehabilitation services following a fall."
+    }
+]
