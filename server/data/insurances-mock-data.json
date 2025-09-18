@@ -1,0 +1,37 @@
+[
+    {
+        "patient_id": "42256",
+        "insurance-number": "INS-42256-001",
+        "insurance-level": "Premium",
+        "description": "Comprehensive coverage for Mr. Ollivander, including fall-related injuries and hospital stays.",
+        "status": "Paid"
+    },
+    {
+        "patient_id": "42226",
+        "insurance-number": "INS-42226-002",
+        "insurance-level": "Standard",
+        "description": "Standard coverage for Albus Dumbledore, covering emergency care and rehabilitation for falls.",
+        "status": "Paid"
+    },
+    {
+        "patient_id": "42253",
+        "insurance-number": "INS-42253-003",
+        "insurance-level": "Basic",
+        "description": "Basic coverage for Katie Bell, cannot use insurance due to non-payment.",
+        "status": "Not Paid"
+    },
+    {
+        "patient_id": "42250",
+        "insurance-number": "INS-42250-004",
+        "insurance-level": "Premium",
+        "description": "Premium coverage for Cornelius Fudge, with full support for fall incidents and recovery.",
+        "status": "Paid"
+    },
+    {
+        "patient_id": "42231",
+        "insurance-number": "INS-42231-005",
+        "insurance-level": "Standard",
+        "description": "Standard coverage for Hermione Granger, covering fall-related medical expenses and follow-up care.",
+        "status": "Paid"
+    }
+]
