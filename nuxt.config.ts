@@ -2,13 +2,13 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   runtimeConfig: {
-    tetonToken: process.env.HOSPITAL_TOKEN,
+    hospitalToken: process.env.HOSPITAL_TOKEN,
     bestInsuranceToken: process.env.BEST_INSURANCE_TOKEN,
     public: {
       hospitalBase: process.env.NUXT_PUBLIC_HOSPITAL_BASE,
       bestInsuranceBase: process.env.NUXT_PUBLIC_BEST_INSURANCE_BASE,
-      tetonDepartmentId: process.env.NUXT_PUBLIC_HOSPITAL_DEPARTMENT_ID,
-      tetonApiVersion: process.env.NUXT_PUBLIC_HOSPITAL_API_VERSION,
+      hospitalDepartmentId: process.env.NUXT_PUBLIC_HOSPITAL_DEPARTMENT_ID,
+      apiVersion: process.env.NUXT_PUBLIC_API_VERSION,
     },
   },
   css: ['primeicons/primeicons.css'],
