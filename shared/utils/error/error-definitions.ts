@@ -12,12 +12,16 @@ export enum ErrorKeys {
   FallIdNotFound = 'FallIdNotFound',
 }
 
-type ErrorMessage = Record<
-  ErrorCategory,
-  Partial<Record<ErrorKeys, { code: number; message: string }>>
->;
+type MessageDef<C extends ErrorCategory> = {
+  code: C;
+  message: string;
+};
 
-export const ErrorMessages: ErrorMessage = {
+type ErrorMessageMap = {
+  [K in ErrorCategory]: Partial<Record<ErrorKeys, MessageDef<K>>>;
+};
+
+export const ErrorMessages: ErrorMessageMap = {
   [ErrorCategory.BadRequest]: {
     [ErrorKeys.NullOrEmptyBody]: {
       code: ErrorCategory.BadRequest,
@@ -41,4 +45,4 @@ export const ErrorMessages: ErrorMessage = {
     },
   },
   [ErrorCategory.InternalServerError]: {},
-};
+} as const;
