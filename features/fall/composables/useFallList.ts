@@ -1,10 +1,11 @@
 import { ref, computed } from 'vue'
 import type { FallModel } from '~/entities/fall/fall.model'
-import { FallListService } from '~/features/fall/service/FallListService'
+import { FallService } from '~/features/fall/service/FallService'
 import { isIso } from '~/shared/lib/dateHelper'
+import { DefaultEndpointBuilder } from '~/shared/api/apiEndpointBuilder'
 
-export function useFallList() {
-  const service = new FallListService()
+export function useFallList(customSegment?: string) {
+  const service = new FallService(undefined, new DefaultEndpointBuilder(customSegment || 'fall'))
   const falls = ref<FallModel[]>([])
   const isLoading = ref(false)
   const error = ref<unknown | null>(null)
